@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>HYYn alumnit ry – Yhteisö, joka yhdistää sukupolvia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="HYYn alumnit ry on Helsingin yliopiston ylioppilaskunnan entisten toimijoiden ja ystävien yhteisö."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --fg: #212529;
+      --accent: #005c9e;
+      --accent-light: #e7f5ff;
+      --card-bg: rgba(255, 255, 255, 0.97);
+      --muted: #495057;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--fg);
+      line-height: 1.65;
+      background-color: var(--bg);
+      background-image: url('images/vanha-ylioppilastalo.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(to top, rgba(248, 249, 250, 0.7), rgba(231, 245, 255, 0.8));
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      transform: scale(0.98);
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 25px;
+      }
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: 1px solid rgba(0, 92, 158, 0.1);
+    }
+
+    .logo svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    h1 {
+      margin: 20px 0 8px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--accent);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    main {
+      display: grid;
+      gap: 40px;
+    }
+
+    @media (min-width: 900px) {
+      main {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 0 0 12px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+    }
+
+    li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 16px 0;
+    }
+
+    .section + .section {
+        margin-top: 16px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(0, 92, 158, 0.15);
+      margin-top: 16px;
+    }
+
+    .highlight-box li::before {
+        content: '→';
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--accent), #007bff);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 4em;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 92, 158, 0.3);
+    }
+
+    .cta-title {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .cta-text {
+      margin: 0 0 24px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--accent);
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: var(--accent-light);
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #6c757d;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="container">
+      <header>
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962A3.75 3.75 0 0112 15.75v-1.5a3.75 3.75 0 013.75-3.75H18a3.75 3.75 0 013.75 3.75v1.5m-7.5-2.962a3.75 3.75 0 00-3.75-3.75H6a3.75 3.75 0 00-3.75 3.75v1.5A3.75 3.75 0 006 15.75v-1.5a3.75 3.75 0 003.75-3.75m-7.5 2.962v7.5a3 3 0 003 3h3.5" />
+          </svg>
+          <span>HYYn alumnit ry</span>
+        </div>
+        <h1>Yhteisö, joka yhdistää sukupolvia</h1>
+        <p class="subtitle">“Me lähdimme HYYstä, HYY ei lähde meistä.”</p>
+      </header>
+
+      <main>
+        <section aria-label="Tietoa yhdistyksestä">
+          <h2>Silta HYY-vuosien ja nykypäivän välille</h2>
+          <p>
+            <strong>HYYn alumnit ry</strong> on Helsingin yliopiston ylioppilaskunnan entisten
+            toimijoiden ja ystävien yhteisö. Yhdistyksen tarkoituksena on tarjota silta
+            aktiivivuosien ja nykyhetken välille - paikka yhteyden ylläpitämiseksi HYYhyn,
+            verkostoitumiselle, muistojen jakamiselle ja vanhojen tuttujen tapaamiselle.
+          </p>
+
+          <div class="section">
+            <h2>Miksi liittyä?</h2>
+            <ul>
+              <li>
+                <strong>Pysy yhteydessä:</strong> Säilytä yhteys HYYhyn ja seuraa ylioppilaskunnan kehitystä.
+              </li>
+              <li>
+                <strong>Verkostoidu:</strong> Tapaa muita alumneja ja HYYn ystäviä tilaisuuksissa, vierailuissa ja tapahtumissa.
+              </li>
+              <li>
+                <strong>Vaikuta ja tue:</strong> Osallistu keskusteluun ja tuo näkemyksesi HYYn
+                tulevaisuudesta.
+              </li>
+              <li>
+                <strong>Tuki ja varainkeruu:</strong> Ole mukana vahvistamassa opiskelijoiden
+                hyvinvointia ja HYYn toimintaa.
+              </li>
+            </ul>
+          </div>
+
+          <h2>Mitä tarjoamme?</h2>
+          <!-- <div class="highlight-box"> -->
+            <ul>
+              <li>Ajankohtaisia keskusteluja ja alumnien näkökulmia</li>
+              <li>Vierailuja ja tapahtumia</li>
+              <li>Mahdollisuuden tukea HYYn arvoja ja tavoitteita</li>
+            </ul>
+          <!-- </div> -->
+        </section>
+
+        <section aria-label="Toiminta ja jäsenyys">
+          <!-- <div class="section"> -->
+            <h2>Kenelle?</h2>
+            <p>
+              Kaikille, jotka tuntevat yhteenkuuluvuutta HYYn kanssa – olitpa ollut hallituksessa, valiokunnassa, tapahtumajärjestäjänä tai muuten mukana. Myös HYYn ystävät ovat tervetulleita, taustasta riippumatta.
+            </p>
+          <!-- </div> -->
+
+          <div class="cta-box">
+            <h2 class="cta-title">Tule mukaan toimintaan</h2>
+            <p class="cta-text">
+              HYYn alumnit ry tarjoaa tavan jatkaa HYYn tarinaa myös aktiivivuosien jälkeen. Tule mukaan rakentamaan siltaa menneiden ja tulevien HYY-sukupolvien välille.
+            </p>
+            <a href="#" class="cta-button">Liity jäseneksi</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>HYYn alumnit ry – Silta HYY-vuosien ja nykypäivän välille.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
